@@ -5,4 +5,4 @@ This repository is a personal collection of notes, explanations, and code snippe
 
 
 External blogs:
-https://newsletter.systemdesign.one/p/whatsapp-engineering
+* https://newsletter.systemdesign.one/p/whatsapp-engineering
