@@ -71,7 +71,3 @@ Erlang's hot code swapping feature is a powerful tool for building **high-availa
 - [Erlang Hot Code Loading Guide](https://erlang.org/doc/tutorial/code_loading.html)
 - [Understanding Erlang Releases and Upgrades](https://erlang.org/doc/design_principles/release_handling.html)
 
----
-
-*Created by Your Name*
-
