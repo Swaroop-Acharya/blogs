@@ -1,10 +1,10 @@
-# 🧠 System Calls — Learning Summary
+# System Calls — Learning Summary
 
 This README summarizes everything I've learned about **system calls** — the bridge between programs and the operating system.
 
 ---
 
-## 📌 What is a System Call?
+## What is a System Call?
 
 A **system call** is how a program requests a service from the **operating system kernel**.
 
@@ -12,7 +12,7 @@ A **system call** is how a program requests a service from the **operating syste
 
 ---
 
-## 🛠️ What System Calls Do
+## What System Calls Do
 
 | Task                  | Example System Calls              |
 |-----------------------|-----------------------------------|
@@ -24,7 +24,7 @@ A **system call** is how a program requests a service from the **operating syste
 
 ---
 
-## 🧱 User Mode vs Kernel Mode
+## User Mode vs Kernel Mode
 
 | Mode         | Can Access Hardware? | Who Runs Here?                  |
 |--------------|-----------------------|----------------------------------|
@@ -35,7 +35,7 @@ A **system call** is how a program requests a service from the **operating syste
 
 ---
 
-## 🧠 What is the Kernel?
+## What is the Kernel?
 
 The **kernel** is the core of the OS:
 - Manages memory, processes, files, devices.
@@ -44,7 +44,7 @@ The **kernel** is the core of the OS:
 
 ---
 
-## 🧪 How a System Call Works (Simplified)
+## How a System Call Works (Simplified)
 
 1. Your app calls a function like `read()`.
 2. A **system call instruction** triggers a switch to kernel mode.
@@ -53,7 +53,7 @@ The **kernel** is the core of the OS:
 
 ---
 
-## 🧰 Examples in Real Life
+## Examples in Real Life
 
 - `read(0, buf, 100)` → reads from keyboard (stdin).
 - `fork()` → creates a new child process.
@@ -62,21 +62,21 @@ The **kernel** is the core of the OS:
 
 ---
 
-## 📚 What’s Next?
+## What’s Next?
 
 Here’s a **learning roadmap** to go deeper:
 
-### ✅ Basics
+### Basics
 - [x] What system calls are
 - [x] Kernel vs user mode
 - [x] Common system calls
 
-### 🟡 Intermediate
+### Intermediate
 - [ ] Write raw syscall-based code in C
 - [ ] Learn how processes & memory are handled (`fork`, `exec`, `mmap`)
 - [ ] Understand file descriptors & pipes
 
-### 🔴 Advanced
+### Advanced
 - [ ] Learn how syscalls are implemented (`syscall`, `int 0x80`)
 - [ ] Use `strace` to debug running programs
 - [ ] Sandbox with `seccomp`
@@ -84,7 +84,7 @@ Here’s a **learning roadmap** to go deeper:
 
 ---
 
-## 🔍 Bonus: Trace Any Program
+## Bonus: Trace Any Program
 
 Use `strace` to see what system calls a program makes:
 
