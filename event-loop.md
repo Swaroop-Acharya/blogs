@@ -125,3 +125,73 @@ timeout
 - **Microtasks** run before macrotasks.
 - **Event loop phases** in Node.js give structure to async handling.
 - **Microtask starvation** can freeze the app.
+
+
+
+
+
+# 🔁 Node.js Event Loop Execution Flow (with Microtasks)
+
+This outlines the internal flow of a **Node.js event loop tick**, and how microtasks (`Promise.then`, `queueMicrotask`) are handled **between phases**.
+
+---
+
+## ✅ 1. Run Main Script (Top-level JS)
+
+- Executes all synchronous code.
+- Schedules:
+  - `setTimeout`, `setInterval` → **Timers phase**
+  - `setImmediate` → **Check phase**
+  - Promises → **Microtask queue**
+  - I/O operations → **I/O Callback phase**
+
+---
+
+## 🔄 2. Start Event Loop (infinite loop)
+
+```text
+while (true) {
+    ┌── Phase 1: Timers
+    │     └─ Run setTimeout, setInterval callbacks
+    │     └─ 🔄 Run all microtasks
+    │
+    ├── Phase 2: I/O Callbacks
+    │     └─ Run completed fs, net, DNS callbacks
+    │     └─ 🔄 Run all microtasks
+    │
+    ├── Phase 3: Idle/Prepare
+    │     └─ Internal use by Node.js core
+    │     └─ 🔄 Run all microtasks
+    │
+    ├── Phase 4: Poll
+    │     └─ Retrieve new I/O events
+    │     └─ Run I/O-related callbacks
+    │     └─ 🔄 Run all microtasks
+    │
+    ├── Phase 5: Check
+    │     └─ Run setImmediate callbacks
+    │     └─ 🔄 Run all microtasks
+    │
+    └── Phase 6: Close Callbacks
+          └─ Run socket.on('close'), etc.
+          └─ 🔄 Run all microtasks
+}
+```
+
+---
+
+## 🧠 Key Rules
+
+- Microtasks run:
+  - Right **after the main script** finishes.
+  - After **every phase** in the event loop.
+- This gives them **priority** over macrotasks.
+- Each tick of the loop goes through all 6 phases in order.
+
+---
+
+## 🔚 Summary
+
+- Node.js uses **phases** to control the execution of different types of async tasks.
+- Microtasks have **priority** and are processed **between** each phase.
+- This design ensures that promises and critical internal tasks run fast and consistently.
